@@ -1,0 +1,76 @@
+<body></body>
+<script src="/three.js"></script>
+<script>
+  // The "scene" is where stuff in our game will happen:
+  var scene = new THREE.Scene();
+  var flat = {flatShading: true};
+  var light = new THREE.AmbientLight('white', 0.8);
+  scene.add(light);
+
+  // The "camera" is what sees the stuff:
+  var aspectRatio = window.innerWidth / window.innerHeight;
+  var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
+  camera.position.z = 500;
+  scene.add(camera);
+
+  // The "renderer" draws what the camera sees onto the screen:
+  var renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // ******** START CODING ON THE NEXT LINE ********
+var body= new THREE.SphereGeometry(100);
+var cover= new THREE.MeshNormalMaterial();
+var persona= new THREE.Mesh(body, cover);
+scene.add(persona);
+var mano= new THREE.SphereGeometry(50);
+
+var derecho= new THREE.Mesh(mano, cover);
+derecho.position.set(-150,0,0);
+scene.add(derecho);
+var izquierdo= new THREE.Mesh(mano, cover);
+izquierdo.position.set(150,0,0);
+scene.add(izquierdo);
+var pie= new THREE.SphereGeometry(50);
+var piederecho= new THREE.Mesh(pie, cover);
+piederecho.position.set(-75,-125,0);
+scene.add(piederecho);
+var pieizquierdo= new THREE.Mesh(pie, cover);
+pieizquierdo.position.set(75,-125,0);
+scene.add(pieizquierdo);
+var ojos= new THREE.SphereGeometry(20,40,200);
+var cover= new THREE.MeshNormalMaterial(flat);
+var ballo= new THREE.Mesh(ojos, cover);
+ballo.position.set(-40,20,100);
+scene.add(ballo);
+var ballo2= new THREE.Mesh(ojos, cover);
+ballo2.position.set(40,20,100);
+scene.add(ballo2);
+var casco =new THREE.CylinderGeometry(60,60,10,50);
+var flat =new THREE.MeshNormalMaterial(flat);
+var casco1_flat = new THREE.Mesh(casco, flat);
+var casco2_flat =new THREE.Mesh(casco, flat);
+scene.add(casco1_flat);
+scene.add(casco2_flat);
+casco1_flat.rotation.set(0,0,90*Math.PI/180);
+casco1_flat.position.set(90,0,0);
+casco2_flat.rotation.set(0,0,90*Math.PI/180);
+casco2_flat.position.set(-90,0,0);
+var plataforma= new THREE.CylinderGeometry(100,100,20,20);
+var cover= new THREE.MeshNormalMaterial(flat);
+var tube= new THREE.Mesh(plataforma, cover);
+scene.add(tube);
+tube.rotation.set(0.5,0,0);
+tube.position.set(200,50,80);
+var shape= new THREE.TorusGeometry(50,25,8,25);
+var cover= new THREE.MeshNormalMaterial(flat);
+var donut= new THREE.Mesh(shape, cover);
+scene.add(donut);
+donut.position.set(200,75,80);
+donut.rotation.set(200,0,100);
+
+
+
+  // Now, show what the camera sees on the screen:
+  renderer.render(scene, camera);
+</script>
